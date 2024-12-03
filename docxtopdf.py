@@ -1,4 +1,5 @@
 import subprocess
+import os
 import tkinter
 from tkinter import filedialog as fd
 from tkinter import Tk
@@ -6,11 +7,11 @@ import aspose.words as aw
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def check():
     try:
-        import docx2pdf
+        import aspose.words
         case()
     except ImportError as e:
             print('---------------------------------------------------------------------')
-            print('Module named "docx2pdf" not found. Please install docx2pdf (pip install docx2pdf)')
+            print('Module named "aspose.words" not found. Please install aspose.words (pip install aspose.words)')
             print('---------------------------------------------------------------------')
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
@@ -18,9 +19,9 @@ def check():
                 print('Updating pip...')
                 proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
                 print(proc1)
-                command = 'pip install docx2pdf'
+                command = 'pip install aspose.words'
                 print ('-----------------------------')
-                print('Installing the module docx2pdf...')
+                print('Installing the module aspose.words...')
                 proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
                 print(proc2)
                 print('Installation completed. Execute the script again with docx2pdf installed.')
@@ -58,7 +59,11 @@ def select_file():
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_selected = select_folder()
-
+    for i in os.listdir(folder_selected):
+        doc = aw.Document(f"{folder_selected}{i}")
+        dest_path = f'./pdf_converted/{i}.pdf'
+        doc.save(f"{dest_path}")
+        print(f'PDF file has been saved in {dest_path}')
 #----------------------------------------------------------------------------------------------------------------------------------------------      
 def convert_singfile():
     file_path = select_file()
@@ -67,4 +72,5 @@ def convert_singfile():
     doc = aw.Document(f"{file_path}")
     doc.save(f"{dest_path}")
     print(f'PDF file has been saved in {dest_path}')
+
 check()
