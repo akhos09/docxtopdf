@@ -29,7 +29,7 @@ def check():
                 print('Exiting...')
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def case():
-    option = int(input('Do you want to convert one file or multiple files? (1 for one file/2 for multiple files): '))
+    option = int(input('Do you want to convert one file or multiple files? (1 for one file / 2 for multiple files): '))
     if option == 1:
         convert_singfile()
     elif option == 2:
