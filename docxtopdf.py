@@ -4,28 +4,39 @@ from tkinter import filedialog as fd
 from tkinter import Tk
 from spire.doc import *
 from spire.doc.common import *
+#----------------------------------------------------------------------------------------------------------------------------------------------------
 def check():
     try:
         import spire.doc
-        convert()
+        case()
     except ImportError as e:
-        print('---------------------------------------------------------------------')
-        print('Module named "Spire.Doc" not found. Please install Spire.Doc (pip install Spire.Doc)')
-        print('---------------------------------------------------------------------')
-        option = str(input('Do you want to install it? (y/n): '))
-        if option == 'y':
-            act = 'python.exe -m pip install --upgrade pip'
-            print('Updating pip...')
-            proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
-            print(proc1)
-            command = 'pip install Spire.Doc'
-            print ('-----------------------------')
-            print('Installing the module pick...')
-            proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
-            print(proc2)
-            print('Installation completed. Execute the script again with Spire.Doc installed.')
-        else:
-            print('Exiting...')
+            print('---------------------------------------------------------------------')
+            print('Module named "Spire.Doc" not found. Please install Spire.Doc (pip install Spire.Doc)')
+            print('---------------------------------------------------------------------')
+            option = str(input('Do you want to install it? (y/n): '))
+            if option == 'y':
+                act = 'python.exe -m pip install --upgrade pip'
+                print('Updating pip...')
+                proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
+                print(proc1)
+                command = 'pip install Spire.Doc'
+                print ('-----------------------------')
+                print('Installing the module pick...')
+                proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
+                print(proc2)
+                print('Installation completed. Execute the script again with Spire.Doc installed.')
+            else:
+                print('Exiting...')
+#----------------------------------------------------------------------------------------------------------------------------------------------------
+def case():
+    option = int(input('Do you want to convert one file or multiple files? (1 for one file/2 for multiple files): '))
+    if option == 1:
+        convert_singfile()
+    elif option == 2:
+        convert_dir()
+    else:
+        print('Please enter a correct option: ')
+        case()
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def select_folder():
     print('Please select the directory where the .docx files are located: ')
@@ -35,7 +46,7 @@ def select_folder():
     folder_selected = fd.askdirectory()
     root.destroy()
     return folder_selected
-
+#----------------------------------------------------------------------------------------------------------------------------------------------------
 def select_file():
     filetypes = [('Docx files', '*.docx'), ('All Files', '*.*')]
     print('Please select the .docx file do you want to convert: ')
@@ -45,9 +56,15 @@ def select_file():
     file_path = fd.askopenfilename(title='Select a docx file', filetypes=filetypes)
     root.destroy()
     return file_path
-    
+#---------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_selected = select_folder()
     for i in select_folder(folder_selected):    
-        print(f'i')
+        print(f'{i}')
+#----------------------------------------------------------------------------------------------------------------------------------------------      
+def convert_singfile():
+    file_path = select_file()
+    document = f'{file_path}'
+    document.LoadFromFile("sample.docx")
+
 check()
