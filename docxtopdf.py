@@ -59,6 +59,7 @@ def select_file():
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_selected = select_folder()
+    print (folder_selected)
     for i in os.listdir(folder_selected):
         doc = aw.Document(f"{folder_selected}{i}")
         dest_path = f'./pdf_converted/{i}.pdf'
@@ -72,5 +73,4 @@ def convert_singfile():
     doc = aw.Document(f"{file_path}")
     doc.save(f"{dest_path}")
     print(f'PDF file has been saved in {dest_path}')
-
 check()
