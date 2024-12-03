@@ -2,16 +2,15 @@ import subprocess
 import tkinter
 from tkinter import filedialog as fd
 from tkinter import Tk
-from spire.doc import *
-from spire.doc.common import *
+import aspose.words as aw
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def check():
     try:
-        import spire.doc
+        import docx2pdf
         case()
     except ImportError as e:
             print('---------------------------------------------------------------------')
-            print('Module named "Spire.Doc" not found. Please install Spire.Doc (pip install Spire.Doc)')
+            print('Module named "docx2pdf" not found. Please install docx2pdf (pip install docx2pdf)')
             print('---------------------------------------------------------------------')
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
@@ -19,12 +18,12 @@ def check():
                 print('Updating pip...')
                 proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
                 print(proc1)
-                command = 'pip install Spire.Doc'
+                command = 'pip install docx2pdf'
                 print ('-----------------------------')
-                print('Installing the module pick...')
+                print('Installing the module docx2pdf...')
                 proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
                 print(proc2)
-                print('Installation completed. Execute the script again with Spire.Doc installed.')
+                print('Installation completed. Execute the script again with docx2pdf installed.')
             else:
                 print('Exiting...')
 #----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -59,12 +58,13 @@ def select_file():
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_selected = select_folder()
-    for i in select_folder(folder_selected):    
-        print(f'{i}')
+
 #----------------------------------------------------------------------------------------------------------------------------------------------      
 def convert_singfile():
     file_path = select_file()
-    document = f'{file_path}'
-    document.LoadFromFile("sample.docx")
-
+    name_pdf = str(input('Enter the name for the pdf file: '))
+    dest_path = f'./pdf_converted/{name_pdf}.pdf'
+    doc = aw.Document(f"{file_path}")
+    doc.save(f"{dest_path}")
+    print(f'PDF file has been saved in {dest_path}')
 check()
