@@ -37,12 +37,12 @@ def select_folder():
     return folder_selected
 
 def select_file():
-    filetypes = ('docx files', '.docx')
+    filetypes = [('Docx files', '*.docx'), ('All Files', '*.*')]
     print('Please select the .docx file do you want to convert: ')
     root = tkinter.Tk()
     root.withdraw()
     root.wm_attributes('-topmost', 1)
-    file_path = fd.askopenfilename()
+    file_path = fd.askopenfilename(title='Select a docx file', filetypes=filetypes)
     root.destroy()
     return file_path
     
