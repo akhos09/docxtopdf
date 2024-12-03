@@ -7,12 +7,12 @@ import aspose.words as aw
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def check():
     try:
-        import aspose.words
+        import a
         case()
     except ImportError as e:
-            print('---------------------------------------------------------------------')
+            print('---------------------------------------------------------------------------------------------')
             print('Module named "aspose.words" not found. Please install aspose.words (pip install aspose.words)')
-            print('---------------------------------------------------------------------')
+            print('---------------------------------------------------------------------------------------------')
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
                 act = 'python.exe -m pip install --upgrade pip'
