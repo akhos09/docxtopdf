@@ -15,6 +15,7 @@ def check():
             print('---------------------------------------------------------------------------------------------')
             print('Module named "spire.doc" not found. Please install spire.doc (pip install spire.doc)')
             print('---------------------------------------------------------------------------------------------')
+            
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
                 act = 'python.exe -m pip install --upgrade pip'
@@ -80,3 +81,5 @@ def convert_dir():
         print(f'PDF file {base_name}.pdf has been saved in the folder pdf_converted.')
         
 check()
+
+#made by @akhos09 github
