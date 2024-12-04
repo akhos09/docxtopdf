@@ -3,7 +3,8 @@ import os
 import tkinter
 from tkinter import filedialog as fd
 from tkinter import Tk
-import aspose.words as aw
+from spire.doc.common import *
+from spire.doc import *
 #----------------------------------------------------------------------------------------------------------------------------------------------------
 def check():
     try:
@@ -61,18 +62,20 @@ def convert_singfile():
     file_path = select_file()
     name_pdf = str(input('Enter the name for the pdf file (without the .pdf extension): '))
     dest_path = f'./pdf_converted/{name_pdf}.pdf'
-    doc = aw.Document(f"{file_path}")
-    doc.save(f"{dest_path}")
+    document = Document()
+    document.LoadFromFile(f"{file_path}")
+    document.SaveToFile(f"{dest_path}", FileFormat.PDF)
     print(f'PDF file has been saved in {dest_path}')
 #---------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_path = select_folder()
     folder_filtered = [file for file in os.listdir(folder_path) if file.endswith(".docx")]
     for i in folder_filtered:
-        doc = aw.Document(os.path.join(folder_path, i))
+        document = Document()
+        document.LoadFromFile(os.path.join(folder_path, i))
         base_name = os.path.splitext(i)[0]
         dest_path = f'./pdf_converted/{base_name}.pdf'
-        doc.save(f"{dest_path}")
+        document.SaveToFile(f"{dest_path}", FileFormat.PDF)
         print(f'PDF file {base_name}.pdf has been saved in the folder pdf_converted.')
         
 check()
