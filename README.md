@@ -2,6 +2,14 @@
 
 A Python script to convert `.docx` files to `.pdf` using the `spire.doc` **FREE LICENSE** (IT LEAVES A WATERMARK) module. This tool can process individual or multiple files in a directory.
 
+## Important Licensing Notice
+
+This project uses the `spire.doc` library for Word to PDF conversion. The library is licensed under a commercial license, and this project is using a **free evaluation version**. 
+
+The free evaluation version may have limitations, such as watermarks on generated PDFs, reduced functionality, or time-limited access. If you are planning to use this project in production or for commercial purposes, you will need to obtain a valid commercial license for the `spire.doc` library.
+
+You can find more details about licensing here: [Spire.doc Licensing](https://www.e-iceblue.com/Introduce/spire-doc.html)
+
 ## Table of Contents
 - [Dependencies](#dependencies)
 - [Installation](#installation)
