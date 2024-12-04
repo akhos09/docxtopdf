@@ -12,7 +12,7 @@ def check():
         case()
     except ImportError as e:
             print('---------------------------------------------------------------------------------------------')
-            print('Module named "aspose.words" not found. Please install aspose.words (pip install aspose.words)')
+            print('Module named "spire.doc" not found. Please install spire.doc (pip install spire.doc)')
             print('---------------------------------------------------------------------------------------------')
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
@@ -20,12 +20,12 @@ def check():
                 print('Updating pip...')
                 proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
                 print(proc1)
-                command = 'pip install aspose.words'
+                command = 'pip install spire.doc'
                 print ('-----------------------------')
-                print('Installing the module aspose.words...')
+                print('Installing the module spire.doc...')
                 proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
                 print(proc2)
-                print('Installation completed. Execute the script again with aspose.words installed.')
+                print('Installation completed. Execute the script again with spire.doc installed.')
             else:
                 print('Exiting...')
 #----------------------------------------------------------------------------------------------------------------------------------------------------
