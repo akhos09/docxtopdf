@@ -1,6 +1,6 @@
 # Vagrant Utilities
 
-A Python script to convert `.docx` files to `.pdf` using the `spire.doc` **FREE LICENSE** (IT LEAVES A WATERMARK) module. This tool can process individual or multiple files in a directory.
+A Python script to convert `.docx` files to `.pdf` using the `spire.doc` **FREE LICENSE** (IT LEAVES A WATERMARK) library. This tool can process individual or multiple files in a directory.
 
 ## Important Licensing Notice
 
