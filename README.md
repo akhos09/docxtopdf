@@ -8,7 +8,7 @@ This project uses the `spire.doc` library for Word to PDF conversion. The librar
 
 The free evaluation version may have limitations, such as watermarks on generated PDFs, reduced functionality, or time-limited access. If you are planning to use this project in production or for commercial purposes, you will need to obtain a valid commercial license for the `spire.doc` library.
 
-You can find more details about licensing here: [Spire.doc Licensing](https://www.e-iceblue.com/Introduce/spire-doc.html)
+You can find more details about licensing here: [Spire.doc Licensing](https://www.e-iceblue.com/)
 
 ## Table of Contents
 - [Dependencies](#dependencies)
