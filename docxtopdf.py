@@ -18,15 +18,12 @@ def check():
             
             option = str(input('Do you want to install it? (y/n): '))
             if option == 'y':
-                act = 'python.exe -m pip install --upgrade pip'
                 print('Updating pip...')
-                proc1 = subprocess.getoutput(["powershell", "-command", f"{act}"])
-                print(proc1)
-                command = 'pip install spire.doc'
-                print ('-----------------------------')
+                subprocess.run("python.exe -m pip install --upgrade pip",text=True)
+                print('-----------------------------')
                 print('Installing the module spire.doc...')
-                proc2 = subprocess.getoutput(["powershell", "-command", f"{command}"])
-                print(proc2)
+                subprocess.run("pip install spire.doc",text=True)
+                print('--------------------------------------------------------------------------')
                 print('Installation completed. Execute the script again with spire.doc installed.')
             else:
                 print('Exiting...')
@@ -59,7 +56,7 @@ def select_file():
     file_path = fd.askopenfilename(title='Select a docx file', filetypes=filetypes)
     root.destroy()
     return file_path
-#----------------------------------------------------------------------------------------------------------------------------------------------      
+#----------------------------------------------------------------------------------------------------------------------------------------------------  
 def convert_singfile():
     file_path = select_file()
     name_pdf = str(input('Enter the name for the pdf file (without the .pdf extension): '))
@@ -68,7 +65,7 @@ def convert_singfile():
     document.LoadFromFile(f"{file_path}")
     document.SaveToFile(f"{dest_path}", FileFormat.PDF)
     print(f'PDF file has been saved in {dest_path}')
-#---------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------------------------------------------
 def convert_dir():
     folder_path = select_folder()
     folder_filtered = [file for file in os.listdir(folder_path) if file.endswith(".docx")]
@@ -79,7 +76,6 @@ def convert_dir():
         dest_path = f'./pdf_converted/{base_name}.pdf'
         document.SaveToFile(f"{dest_path}", FileFormat.PDF)
         print(f'PDF file {base_name}.pdf has been saved in the folder pdf_converted.')
-        
+#----------------------------------------------------------------------------------------------------------------------------------------------------
 check()
-
 #made by @akhos09 github
