@@ -54,7 +54,7 @@ The script requires the following libraries and tools:
    Open a terminal or command prompt and navigate to the directory containing the script. Run the following command:
 
    ```
-   python convert-docx-to-pdf.py
+   python docxtopdf.py
    ```
 
 2. **Choose your conversion method**:
